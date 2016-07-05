@@ -47,7 +47,7 @@ module.exports = {
     }
   },
   eslint: {
-    configFile: './.eslintrc.json'
+    configFile: '.eslintrc.json'
   },
   resolve: {
     root: path.resolve(__dirname, 'node_modules'),
