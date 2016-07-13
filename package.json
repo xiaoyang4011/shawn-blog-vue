@@ -44,6 +44,7 @@
     "gulp-util": "^3.0.7",
     "html-webpack-plugin": "^2.16.1",
     "image-webpack-loader": "^1.8.0",
+    "mint-loadmore": "^0.1.2",
     "open": "0.0.5",
     "react-cookie": "^0.4.5",
     "style-loader": "^0.13.1",

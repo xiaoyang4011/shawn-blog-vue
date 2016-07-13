@@ -1,7 +1,7 @@
 import { UserResource } from './resources'
 
 export default {
-  getUsers: function () {
-    return UserResource.get({id:'getList'})
+  getList: function (limit) {
+    return UserResource.get({limit:limit})
   }
 }

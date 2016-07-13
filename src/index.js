@@ -1,6 +1,9 @@
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueValidator from 'vue-validator'
+import { sync } from 'vuex-router-sync'
+import store from './vuex/store'
 import configRouter from './routes'
 import App from './components/App.vue'
 import 'font-awesome/css/font-awesome.css'
@@ -16,6 +19,7 @@ const router = new VueRouter({
   suppressTransitionError: true
 })
 configRouter(router)
+sync(store, router)
 
 router.start(Vue.extend(App), '#root')
 window.router = router
