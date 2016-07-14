@@ -1,9 +1,12 @@
 <template>
   <div class="example-wrapper" id="example1">
     <loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded">
-      <ul class="example-list">
-        <li v-for="item in cardList">
+      <ul class="index-ul">
+        <li v-for="item in cardList" class="index-li">
           <img :src="item.img" />
+          <div class="card_info">
+              <p>{{ item.name }}</p>
+          </div>
         </li>
       </ul>
     </loadmore>
@@ -11,6 +14,7 @@
 </template>
 <script>
 require('mint-loadmore/lib/style.css')
+require('./../../assets/css/index.scss')
 import { getCardList } from '../../vuex/actions'
 import Loadmore from 'mint-loadmore'
 
@@ -48,7 +52,7 @@ export default {
         }
 
         this.$broadcast('onBottomLoaded', id)
-      }, 5000)
+      }, 100)
     }
   }
 }

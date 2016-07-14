@@ -33,6 +33,7 @@ module.exports = {
     loaders: [
       { test: /\.vue$/,loader: 'vue', include: path.join(__dirname,'src')},
       { test: /\.js$/, loader: 'babel', exclude: /node_modules|vue\/dist|vue-hot-reload-api|vue-router\/|vue-loader/},
+      { test: /\.scss$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader!cssnext-loader')},
       { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap' ) },
       { test: /\.(jpe?g|png|gif)$/i, loaders: [
         'url?limit=10000&name=images/[hash:6].[name].[ext]',
