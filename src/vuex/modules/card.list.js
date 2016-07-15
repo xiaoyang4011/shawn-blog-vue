@@ -6,7 +6,7 @@ const state = {
 
 const mutations = {
   [GET_CARD_LIST](state, action){
-    state.cards = action.cards
+    state.cards = state.cards.concat(action.cards)
   }
 }
 

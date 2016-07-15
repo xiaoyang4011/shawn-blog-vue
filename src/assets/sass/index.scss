@@ -1,12 +1,25 @@
-.index-li {
-  list-style-type: none;
-  text-align: center;
-  border-bottom: 1px solid #d5dbdb;
-  margin-bottom: 80px;
-}
 .index-ul {
   -webkit-padding-start: 0;
 }
 .card_info {
   margin-top: 10px;
+}
+.index-li {
+  list-style-type: none;
+  text-align: center;
+  border-bottom: 1px solid #d5dbdb;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.mint-popup-3 {
+  width: 50%;
+  height: 100%;
+  background-color: #fff;
+}
+img[lazy=loading] {
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  background-color: #ddd;
+  border-radius: 20px;
 }

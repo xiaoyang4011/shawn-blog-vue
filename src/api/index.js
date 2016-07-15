@@ -1,7 +1,7 @@
 import { UserResource } from './resources'
 
 export default {
-  getList: function (limit) {
-    return UserResource.get({limit:limit})
+  getList: function (page) {
+    return UserResource.get({page:page})
   }
 }

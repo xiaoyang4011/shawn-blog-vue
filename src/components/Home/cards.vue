@@ -1,6 +1,8 @@
 <template>
-  <mt-header class="mint-header" fixed title="全部卡组">
-  <mt-button class="mint-button" v-link="'/'" slot="left" icon="back"></mt-button>
+  <mt-popup :visible.sync="menu" position="right" class="mint-popup-3">
+  </mt-popup>
+  <mt-header fixed title="全部卡组">
+  <mt-button v-link="'/'" slot="left" icon="back"></mt-button>
   <mt-button slot="right"   @click="menu = true" icon="more">
   </mt-button>
   </mt-header>
@@ -16,19 +18,16 @@
       </ul>
     </mt-loadmore>
   </div>
-  <mt-popup :visible.sync="menu" position="right" class="mint-popup-3">
-
-  </mt-popup>
 </template>
 <script>
-require('./../../assets/css/index.scss')
+require('./../../assets/sass/index.scss')
 import { getCardList } from '../../vuex/actions'
 
 export default {
   data() {
     return {
       menu : false,
-      limit : 0
+      page : 1
     }
   },
   vuex:{
@@ -40,7 +39,7 @@ export default {
     }
   },
   created(){
-    this.getCardList()
+    this.getCardList(this.page)
   },
   methods: {
     loadTop(id) {
@@ -48,10 +47,10 @@ export default {
     },
     loadBottom(id) {
       setTimeout(() => {
-        this.limit = this.limit + 20
-        this.getCardList(this.limit)
+        this.page = this.page + 1
+        this.getCardList(this.page)
 
-        if(this.limit < 880) {
+        if(this.page < 880) {
           this.allLoaded = true
         }
 
@@ -65,34 +64,14 @@ export default {
 .mint-header {
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+  height: 45px;
 }
 .mint-header .mint-button {
-  color : silver;
+  color: silver;
 }
 .mint-header-title {
   color: gray;
-  margin-top : 10px;
+  margin-top : 15px;
   margin-bottom: 10px;
 }
-.mint-popup-3 {
-  width: 50%;
-  height: 100%;
-  background-color: #fff;
-}
-.index-li {
-  list-style-type: none;
-  text-align: center;
-  border-bottom: 1px solid #d5dbdb;
-  margin-top: 50px;
-  margin-bottom: 20px;
-}
-
-img[lazy=loading] {
-  width: 40px;
-  height: 40px;
-  margin: auto;
-  background-color: #ddd;
-  border-radius: 20px;
-}
-
 </style>
