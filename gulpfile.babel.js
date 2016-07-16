@@ -35,4 +35,26 @@ gulp.task('serve', cb =>{
 
 gulp.task('clean', cb => del([path.join(__dirname, '/dist/*')]))
 
+gulp.task('set-env-prod', ()=>{
+  env({
+    vars: {
+      'NODE_ENV':'production'
+    }
+  })
+})
+
+gulp.task('webpack', cb => {
+  let webpackConfig = require('./webpack.config')
+  let myConfig = Object.create(webpackConfig)
+  webpack(myConfig, function(err, stats) {
+      if(err) throw new gutil.PluginError("webpack", err)
+      gutil.log("[webpack]", stats.toString({
+          // output options
+      }))
+      cb()
+  })
+})
+
+gulp.task('webpack:dist',gulpSequence('set-env-prod','webpack'))
+
 gulp.task('build', gulpSequence('clean','webpack:dist'))
