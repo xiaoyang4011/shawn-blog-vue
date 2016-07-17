@@ -1,9 +1,9 @@
 <template>
   <mt-popup :visible.sync="menu" position="right" class="mint-popup-3">
   </mt-popup>
-  <mt-header fixed title="全部卡组">
+  <mt-header fixed title="全部卡组" v-bind:class="{ 'open-menu': menu, 'close-menu' : !menu}">
   <mt-button v-link="'/'" slot="left" icon="back"></mt-button>
-  <mt-button slot="right"   @click="menu = true" icon="more">
+  <mt-button slot="right"   @click="openMenu" icon="more">
   </mt-button>
   </mt-header>
   <div class="center">
@@ -56,6 +56,10 @@ export default {
 
         this.$broadcast('onBottomLoaded', id)
       }, 100)
+    },
+    openMenu() {
+      this.menu = true
+
     }
   }
 }
@@ -73,5 +77,12 @@ export default {
   color: gray;
   margin-top : 15px;
   margin-bottom: 10px;
+}
+.open-menu {
+  -webkit-transform:translate(-50%,0);
+  transition: transform 0.4s linear 0s;
+}
+.close-menu {
+  transition: transform 0.2s linear 0s;
 }
 </style>
