@@ -18,6 +18,20 @@
       </ul>
     </mt-loadmore>
   </div>
+  <mt-tabbar :selected.sync="selected" :fixed="true">
+  <mt-tab-item id="1">
+    <i class="fa fa-home fa-fw fa-2x"></i>
+  </mt-tab-item>
+  <mt-tab-item id="2">
+    <i class="fa fa-codiepie fa-2x"></i>
+  </mt-tab-item>
+  <mt-tab-item id="3">
+  <i class="fa fa-coffee fa-2x"></i>
+  </mt-tab-item>
+  <mt-tab-item id="4">
+    <i class="fa fa-github fa-2x"></i>
+  </mt-tab-item>
+</mt-tabbar>
 </template>
 <script>
 require('./../../assets/sass/index.scss')
@@ -85,4 +99,11 @@ export default {
 .close-menu {
   transition: transform 0.2s linear 0s;
 }
+i {
+    color: rgba(99, 87, 97, 0.61);
+}
+.mint-tabbar {
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
 </style>
