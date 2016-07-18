@@ -1,36 +1,53 @@
 <template>
   <mt-popup :visible.sync="menu" position="right" class="mint-popup-3">
   </mt-popup>
-  <mt-header fixed title="全部卡组" v-bind:class="{ 'open-menu': menu, 'close-menu' : !menu}">
-  <mt-button v-link="'/'" slot="left" icon="back"></mt-button>
-  <mt-button slot="right"   @click="openMenu" icon="more">
-  </mt-button>
-  </mt-header>
-  <div class="center">
-    <mt-loadmore :bottom-method="loadBottom" :bottom-all-loaded="allLoaded">
-      <ul class="index-ul">
-        <li v-for="item in cardList" class="index-li">
-              <img v-lazy="item.img"/>
-              <div class="card_info">
-                  <p>{{ item.name }}</p>
-              </div>
-        </li>
-      </ul>
-    </mt-loadmore>
-  </div>
-  <mt-tabbar :selected.sync="selected" :fixed="true">
-  <mt-tab-item id="1">
-    <i class="fa fa-home fa-fw fa-2x"></i>
-  </mt-tab-item>
-  <mt-tab-item id="2">
-    <i class="fa fa-codiepie fa-2x"></i>
-  </mt-tab-item>
-  <mt-tab-item id="3">
-  <i class="fa fa-coffee fa-2x"></i>
-  </mt-tab-item>
-  <mt-tab-item id="4">
-    <i class="fa fa-github fa-2x"></i>
-  </mt-tab-item>
+
+
+
+<mt-tab-container :active.sync="selected">
+   <mt-tab-container-item id="卡组库">
+     <mt-header fixed :title="selected" v-bind:class="{ 'open-menu': menu, 'close-menu' : !menu}">
+     <mt-button v-link="'/'" slot="left" icon="back"></mt-button>
+     <mt-button slot="right"   @click="openMenu" icon="more">
+     </mt-button>
+     </mt-header>
+     <div class="center">
+       <mt-loadmore :bottom-method="loadBottom" :bottom-all-loaded="allLoaded">
+         <ul class="index-ul">
+           <li v-for="item in cardList" class="index-li">
+                 <img v-lazy="item.img"/>
+                 <div class="card_info">
+                     <p>{{ item.name }}</p>
+                 </div>
+           </li>
+         </ul>
+       </mt-loadmore>
+     </div>
+   </mt-tab-container-item>
+   <mt-tab-container-item id="技术圈">
+     <mt-header fixed :title="selected"></mt-header>
+   </mt-tab-container-item>
+   <mt-tab-container-item id="娱乐">
+     <mt-header fixed :title="selected"></mt-header>
+   </mt-tab-container-item>
+   <mt-tab-container-item id="Git">
+     <mt-header fixed :title="selected"></mt-header>
+   </mt-tab-container-item>
+ </mt-tab-container>
+
+ <mt-tabbar :selected.sync="selected" :fixed="true">
+ <mt-tab-item id="卡组库">
+   <i class="fa fa-home fa-fw fa-2x"></i>
+ </mt-tab-item>
+ <mt-tab-item id="技术圈">
+   <i class="fa fa-codiepie fa-2x"></i>
+ </mt-tab-item>
+ <mt-tab-item id="娱乐">
+ <i class="fa fa-coffee fa-2x"></i>
+ </mt-tab-item>
+ <mt-tab-item id="Git">
+   <i class="fa fa-github fa-2x"></i>
+ </mt-tab-item>
 </mt-tabbar>
 </template>
 <script>
@@ -41,7 +58,8 @@ export default {
   data() {
     return {
       menu : false,
-      page : 1
+      page : 1,
+      selected: '卡组库'
     }
   },
   vuex:{
