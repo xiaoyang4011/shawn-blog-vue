@@ -1,5 +1,14 @@
 <template>
   <mt-popup :visible.sync="menu" position="right" class="mint-popup-3">
+    <div class="left-menu">
+      <ul>
+        <li>菜单1</li>
+        <li>菜单1</li>
+        <li>菜单1</li>
+        <li>菜单1</li>
+        <li>菜单1</li>
+      </ul>
+    </div>
   </mt-popup>
 
 
